@@ -1,3 +1,5 @@
+# uwr25_remote/communicator.py
+
 import serial
 import time
 from config import SerialConfig
@@ -37,20 +39,17 @@ class SerialCommunicator:
             print("Error sending data:", e)
         return data_str
     
-    """
+    
 
     def read_from_arduino(self):
-        while True:
-            if self.connected and self.serial_port and self.serial_port.is_open:
-                try:
-                    if self.serial_port.in_waiting > 0:
-                        self.arduino_data = self.serial_port.readline().decode(errors='ignore').strip()
-                        print("Received:", self.arduino_data)
-                except Exception as e:
-                    print("Error reading data:", e)
-            else:
-                time.sleep(1)
-            time.sleep(0.01)
+        if self.connected and self.serial_port and self.serial_port.is_open:
+            try:
+                if self.serial_port.in_waiting > 0:
+                    self.arduino_data = self.serial_port.readline()
+                    print("Received:", self.arduino_data)
+
+            except Exception as e:
+                print("Error reading data:", e)
 
     def close(self):
         if self.serial_port and self.serial_port.is_open:
@@ -59,4 +58,4 @@ class SerialCommunicator:
         else:
             print("Serial port was not open")
 
-    """
+    

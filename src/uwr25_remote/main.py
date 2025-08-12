@@ -1,3 +1,5 @@
+# uwr25_remote/main.py
+
 from gamepad import logicool_controller
 from controller import Controller
 from communicator import SerialCommunicator
@@ -15,7 +17,8 @@ def main():
             #print(cmd_vel)
             data = communicator.communicate(cmd_vel)
             #print(data)
-            print(f"\rSent: {data.strip()}    ", end='', flush=True)
+            #print(f"\rSent: {data.strip()}    ", end='', flush=True)
+            communicator.read_from_arduino()
 
         except KeyboardInterrupt:
             break

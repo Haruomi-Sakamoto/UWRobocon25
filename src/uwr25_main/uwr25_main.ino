@@ -1,9 +1,17 @@
-void setup() {
-  // put your setup code here, to run once:
+#include "com.h"
+#include "thctrl.h"
 
+com SerialHandler;
+th TrusterController;
+
+void setup() {
+  SerialHandler.begin();
+  TrusterController.begin();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  SerialHandler.update();
+  TrusterController.drive(1.0);
+  //power 0.0 ~ 1.0
+  delay(DELAY);
 }

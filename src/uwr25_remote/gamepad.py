@@ -1,14 +1,26 @@
 # uwr25_remote/gamead.py
 
 import pygame
+import time
 from config import GamepadConfig
 
 class logicool_controller:
     def __init__(self):
         pygame.init()
         self.gamepad_config = GamepadConfig()
-        self.logicool = pygame.joystick.Joystick(0)
-        self.logicool.init()
+        while True:
+            try:
+                pygame.joystick.init()
+                if pygame.joystick.get_count() == 0:
+                    raise pygame.error("gamepad is not found")
+                self.logicool = pygame.joystick.Joystick(0)
+                self.logicool.init()
+                print("Logicool controller initialized")
+                break
+            except pygame.error as e:
+                print(f"Error initializing gamepad: {e}")
+                time.sleep(1)
+
         self.status = [0] * 20
 
     def check_state(self):
