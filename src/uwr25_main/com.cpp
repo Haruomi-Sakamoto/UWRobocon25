@@ -2,7 +2,7 @@
 
 com::com() {} 
 
-float cmdvel[CONTENTS] = {0};
+float cmdvel[CONTENTS] = {0,0,0,0};
 
 void com::begin() {
   Serial.begin(COMSPEED);

@@ -11,7 +11,7 @@ void setup() {
 
 void loop() {
   SerialHandler.update();
-  TrusterController.drive(1.0);
+  TrusterController.drive(0.2);
   //power 0.0 ~ 1.0
   delay(DELAY);
 }

@@ -11,6 +11,8 @@
 
 extern float cmdvel[CONTENTS];
 
-extern const int thvpin[4];
-extern int pwm[4];
+extern const int thvpin[THRUSTER];
+extern const int thvec[THRUSTER][THRUSTER];
+extern  float thpwr[THRUSTER];
+extern int pwm[THRUSTER];
 
