@@ -7,6 +7,7 @@ class Controller:
             "linear": {"x": 0.0, "y": 0.0, "z": 0.0},
             "angular": {"x": 0.0, "y": 0.0, "z": 0.0}
         }
+        self.power = 0.2
 
         def norm(val):
             return max(min(val / 255.0, 1.0), -1.0)
@@ -15,18 +16,18 @@ class Controller:
         def gen_cmd_vel(status):
             self.status = status
 
-            LX = self.norm(status[0])
-            LY = self.norm(status[1])
-            RX = self.norm(status[2])
-            RY = self.norm(status[3])
+            LX = self.norm(status[0]) * self.power
+            LY = self.norm(status[1]) * self.power
+            RX = self.norm(status[2]) * self.power
+            RY = self.norm(status[3]) * self.power
             LB = status[8]
             LT = status[10]
 
             # Z軸移動
             if LB and not LT:
-                linear_z = 1.0
+                linear_z = 1.0 * self.power
             elif LT and not LB:
-                linear_z = -1.0
+                linear_z = -1.0 * self.power
             else:
                 linear_z = 0.0
 

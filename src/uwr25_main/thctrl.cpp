@@ -2,7 +2,7 @@
 
 th::th() {} 
 
-const int thvpin[THRUSTER] = {3,5,6,9};
+const int thvpin[THRUSTER] = {3,9,6,5};
 const int thvec[THRUSTER][THRUSTER] = {
     {0, 1, 0,  1},
     {0, 1, 0, -1},
