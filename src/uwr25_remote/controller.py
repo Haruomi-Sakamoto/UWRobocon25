@@ -7,7 +7,7 @@ class Controller:
             "linear": {"x": 0.0, "y": 0.0, "z": 0.0},
             "angular": {"x": 0.0, "y": 0.0, "z": 0.0}
         }
-        self.power = 0.2
+        self.power = 0.4
 
         def norm(val):
             return max(min(val / 255.0, 1.0), -1.0)
